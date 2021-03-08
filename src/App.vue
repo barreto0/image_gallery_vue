@@ -2,7 +2,7 @@
   <div>
     <h1 class="title">{{ titulo }}</h1>
 
-    <input type="search" v-on:input="filter = $event.target.value" class="filter" placeholder="Filter the images by the author names"/>
+    <input type="search" v-on:input="filter = $event.target.value" class="filter" placeholder="You can filter the images by the author names"/>
     <ul class="picture-list">
       <li class="picture-list-item" v-for="picture of picturesWithFilter" v-bind:key="picture.id">
 

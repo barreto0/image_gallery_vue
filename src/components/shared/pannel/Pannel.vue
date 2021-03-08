@@ -1,19 +1,28 @@
 <template>
   <div class="pannel">
-    <a :href="url">
-      <div class="pannel-content">
-        <img class="responsive-image" v-bind:src="url" :alt="author">
-        <p class="author-style">Author: {{ author }} </p>
-      </div>
-    </a>
+    <div class="pannel-content">
+
+      <a :href="url">
+        <responsive-image :url="url" :author="author"></responsive-image>
+      </a>
+
+      <p @dblclick="visible = !visible" class="author-style">Author: {{ author }} </p>
+    </div>
+
   </div>
 
 </template>
 
 <script>
+import ResponsiveImage from '../responsive-image/ResponsiveImage.vue';
+
 export default {
 
-  props: ['title','author','url']
+  props: ['title','author','url'],
+
+  components: {
+    'responsive-image': ResponsiveImage
+  },
 
 
 }
@@ -34,11 +43,7 @@ export default {
   border-radius: 10px;
 }
 
-.responsive-image {
-  height: 150px;
-  width: 100%;
-  border-radius: 10px;
-}
+
 
 .author-style {
   font-size: 13px;
