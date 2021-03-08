@@ -1,11 +1,16 @@
 <template>
-  <div id="app">
-    <h1>{{ titulo }}</h1>
+  <div class="body">
+    <h1 class="title">{{ titulo }}</h1>
 
-    <ul>
-      <li v-for="picture of pictures" v-bind:key="picture.id">
-        <img v-bind:src="picture.download_url" :alt="picture.author">
-        <span>Autor: {{picture.author}} </span>
+    <ul class="picture-list">
+      <li class="picture-list-item" v-for="picture of pictures" v-bind:key="picture.id">
+
+        <pannel
+        :title="picture.url"
+        :author="picture.author"
+        :url="picture.download_url">
+        </pannel>
+
       </li>
     </ul>
 
@@ -13,7 +18,14 @@
 </template>
 
 <script>
+
+import Pannel from './components/shared/pannel/Pannel.vue';
+
 export default {
+
+  components: {
+    'pannel': Pannel
+  },
 
   data () {
     return {
@@ -31,30 +43,28 @@ export default {
 </script>
 
 <style>
-#app {
+.body {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin: 0 auto;
 }
 
-h1, h2 {
-  font-weight: normal;
+.title {
+  text-align: center;
 }
 
-ul {
+.picture-list {
+  list-style: none;
   list-style-type: none;
   padding: 0;
 }
 
-li {
+.picture-list .picture-list-item {
   display: inline-block;
   margin: 0 10px;
 }
 
-a {
-  color: #42b983;
-}
 </style>
