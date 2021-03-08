@@ -2,8 +2,9 @@
   <div>
     <h1 class="title">{{ titulo }}</h1>
 
+    <input type="search" v-on:input="filter = $event.target.value" class="filter" placeholder="Filter the images by the author names"/>
     <ul class="picture-list">
-      <li class="picture-list-item" v-for="picture of pictures" v-bind:key="picture.id">
+      <li class="picture-list-item" v-for="picture of picturesWithFilter" v-bind:key="picture.id">
 
         <pannel
         :title="picture.url"
@@ -34,9 +35,24 @@ export default {
   data () {
     return {
       titulo: 'Nothing much, just a gallery of RandomPics',
-      pictures: []
+      pictures: [],
+      filter: '',
     }
   },
+
+  computed: {
+
+    picturesWithFilter(){
+      if(this.filter){
+        let exp = new RegExp(this.filter.trim(), 'i');
+        return this.pictures.filter(picture => exp.test(picture.author));
+      }else{
+        return this.pictures;
+      }
+    }
+
+  },
+
   created () {
     let promise = this.$http.get('https://picsum.photos/v2/list?page=2&limit=20');
     promise
@@ -57,6 +73,7 @@ body {
   color: #2c3e50;
   background-color: #8BC6EC;
   background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+  padding: 10px 50px;
 }
 
 .title {
@@ -77,6 +94,14 @@ footer {
 .picture-list .picture-list-item {
   display: inline-block;
   margin: 0 10px;
+}
+
+.filter {
+  display: block;
+  height: 40px;
+  width: 100%;
+  border-radius: 10px;
+  padding: 0 20px;
 }
 
 </style>

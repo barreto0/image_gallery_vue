@@ -3,7 +3,7 @@
     <a :href="url">
       <div class="pannel-content">
         <img class="responsive-image" v-bind:src="url" :alt="author">
-        <p class="author-style">Autor: {{ author }} </p>
+        <p class="author-style">Author: {{ author }} </p>
       </div>
     </a>
   </div>
