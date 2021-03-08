@@ -1,4 +1,4 @@
-# carpic
+# RandomPic
 
 > A Vue.js project
 
