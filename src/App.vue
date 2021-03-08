@@ -1,5 +1,5 @@
 <template>
-  <div class="body">
+  <div>
     <h1 class="title">{{ titulo }}</h1>
 
     <ul class="picture-list">
@@ -13,6 +13,10 @@
 
       </li>
     </ul>
+
+    <footer>
+      <h4>Made with Vue.js by Gabriel Barreto 2021</h4>
+    </footer>
 
   </div>
 </template>
@@ -29,12 +33,12 @@ export default {
 
   data () {
     return {
-      titulo: 'Bem vindo ao RandomPics',
+      titulo: 'Nothing much, just a gallery of RandomPics',
       pictures: []
     }
   },
   created () {
-    let promise = this.$http.get('https://picsum.photos/v2/list?page=2&limit=100');
+    let promise = this.$http.get('https://picsum.photos/v2/list?page=2&limit=20');
     promise
     .then(res => res.json())
     .then(pictures => this.pictures = pictures, err => console.log(err)); // a resposta também é uma promise
@@ -42,18 +46,26 @@ export default {
 }
 </script>
 
-<style>
-.body {
+// scoped deixa os estilos afetarem apenas o component em que é declarado
+<style >
+
+body {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin: 0 auto;
+  background-color: #8BC6EC;
+  background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
 }
 
 .title {
   text-align: center;
+  color: white;
+}
+
+footer {
+  color: white;
 }
 
 .picture-list {
