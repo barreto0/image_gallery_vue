@@ -1,9 +1,11 @@
 <template>
   <div class="pannel">
     <div class="pannel-content">
-      <a :href="url">
-        <responsive-image :url="url" :author="author"></responsive-image>
-      </a>
+      <responsive-image
+        v-my-transform
+        :url="url"
+        :author="author"
+      ></responsive-image>
 
       <p @dblclick="visible = !visible" class="author-style">
         Author: {{ author }}

@@ -4,6 +4,7 @@ import App from './App.vue';
 import VueResource from 'vue-resource'; // modulo de consumo de api
 import VueRouter from 'vue-router'; // modulo de roteamento da aplicação
 import {routes} from './routes';
+import './directives/Transform';
 
 Vue.use(VueResource);
 Vue.use(VueRouter);
