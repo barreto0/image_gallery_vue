@@ -8,6 +8,13 @@
       class="filter"
       placeholder="You can filter the images by the author names"
     />
+    <my-button
+      type="submit"
+      label="Nuke"
+      :confirmation="true"
+      buttonStyle="danger"
+      v-on:buttonActivated="nuke()"
+    ></my-button>
     <ul class="picture-list">
       <li
         class="picture-list-item"
@@ -31,10 +38,12 @@
 
 <script>
 import Pannel from "../shared/pannel/Pannel.vue";
+import Button from "../shared/button/Button.vue";
 
 export default {
   components: {
     pannel: Pannel,
+    "my-button": Button,
   },
 
   data() {
@@ -56,9 +65,15 @@ export default {
     },
   },
 
+  methods: {
+    nuke() {
+      alert("you've just got pranked my dude");
+    },
+  },
+
   created() {
     let promise = this.$http.get(
-      "https://picsum.photos/v2/list?page=2&limit=20"
+      "https://picsum.photos/v2/list?page=3&limit=20"
     );
     promise
       .then((res) => res.json())

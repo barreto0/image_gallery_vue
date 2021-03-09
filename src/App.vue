@@ -1,27 +1,19 @@
 <template>
   <div>
-    <nav>
-      <ul>
-        <!-- <li>
-          <router-link to="/">Home</router-link>
-        </li>
-        <li>
-          <router-link to="/newsletter">Newsletter</router-link>
-        </li> -->
-        <li v-for="route in routes" :key="route.path">
-          <router-link v-bind:to="route.path ? route.path : '/'">{{
-            route.title
-          }}</router-link>
-        </li>
-      </ul>
-    </nav>
+    <my-menu :routes="routes"></my-menu>
     <router-view> </router-view>
   </div>
 </template>
 
 <script>
 import { routes } from "./routes";
+import Menu from "./components/shared/menu/Menu.vue";
+
 export default {
+  components: {
+    "my-menu": Menu,
+  },
+
   data() {
     return {
       routes: routes,
