@@ -1,11 +1,33 @@
 <template>
-  <div></div>
+  <div>
+    <nav>
+      <ul>
+        <!-- <li>
+          <router-link to="/">Home</router-link>
+        </li>
+        <li>
+          <router-link to="/newsletter">Newsletter</router-link>
+        </li> -->
+        <li v-for="route in routes" :key="route.path">
+          <router-link v-bind:to="route.path ? route.path : '/'">{{
+            route.title
+          }}</router-link>
+        </li>
+      </ul>
+    </nav>
+    <router-view> </router-view>
+  </div>
 </template>
 
 <script>
-import Pannel from "./components/shared/pannel/Pannel.vue";
-
-export default {};
+import { routes } from "./routes";
+export default {
+  data() {
+    return {
+      routes: routes,
+    };
+  },
+};
 </script>
 
 // scoped deixa os estilos afetarem apenas o component em que é declarado
