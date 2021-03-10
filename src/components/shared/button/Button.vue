@@ -25,7 +25,6 @@ export default {
     },
     buttonStyle: {
       type: String,
-      required: true,
     },
   },
 
