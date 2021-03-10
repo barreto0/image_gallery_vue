@@ -2,12 +2,12 @@
   <div class="pannel">
     <div class="pannel-content">
       <responsive-image
-        v-my-transform
+        v-my-transform="{ increment: 30, animate: true }"
         :url="url"
         :author="author"
       ></responsive-image>
 
-      <p @dblclick="visible = !visible" class="author-style">
+      <p v-show="visible" @dblclick="visible = !visible" class="author-style">
         Author: {{ author }}
       </p>
     </div>
@@ -19,6 +19,12 @@ import ResponsiveImage from "../responsive-image/ResponsiveImage.vue";
 
 export default {
   props: ["title", "author", "url"],
+
+  data() {
+    return {
+      visible: true,
+    };
+  },
 
   components: {
     "responsive-image": ResponsiveImage,
