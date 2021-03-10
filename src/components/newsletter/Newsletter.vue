@@ -78,8 +78,12 @@ export default {
   methods: {
     signToNewsletter() {
       alert(this.user);
-      // limpa form apos envio
-      this.user = new User();
+      this.$http
+        .post("https://jsonplaceholder.typicode.com/posts", this.user)
+        .then(
+          () => (this.user = new User()),
+          (err) => console.log(err)
+        );
     },
   },
 };
