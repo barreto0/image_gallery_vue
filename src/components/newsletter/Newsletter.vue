@@ -61,6 +61,7 @@
 <script>
 import Pannel from "../shared/pannel/Pannel";
 import Button from "../shared/button/Button";
+import User from "../../domain/user/User";
 
 export default {
   components: {
@@ -70,12 +71,7 @@ export default {
 
   data() {
     return {
-      user: {
-        name: "",
-        email: "",
-        avatar: "",
-        venting: "",
-      },
+      user: new User(),
     };
   },
 
@@ -83,12 +79,7 @@ export default {
     signToNewsletter() {
       alert(this.user);
       // limpa form apos envio
-      this.user = {
-        name: "",
-        email: "",
-        avatar: "",
-        venting: "",
-      };
+      this.user = new User();
     },
   },
 };
