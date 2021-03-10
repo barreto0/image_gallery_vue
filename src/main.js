@@ -7,6 +7,7 @@ import {routes} from './routes';
 import './directives/Transform';
 
 Vue.use(VueResource);
+Vue.http.options.root = 'https://jsonplaceholder.typicode.com';
 Vue.use(VueRouter);
 
 const router = new VueRouter({

@@ -62,6 +62,7 @@
 import Pannel from "../shared/pannel/Pannel";
 import Button from "../shared/button/Button";
 import User from "../../domain/user/User";
+import UserService from "../../domain/user/UserService";
 
 export default {
   components: {
@@ -75,15 +76,16 @@ export default {
     };
   },
 
+  created() {
+    this.userService = new UserService(this.$resource);
+  },
+
   methods: {
     signToNewsletter() {
-      alert(this.user);
-      this.$http
-        .post("https://jsonplaceholder.typicode.com/posts", this.user)
-        .then(
-          () => (this.user = new User()),
-          (err) => console.log(err)
-        );
+      this.userService.signToNewsletter(this.user).then(
+        () => (this.user = new User()),
+        (err) => console.log(err)
+      );
     },
   },
 };
